@@ -1,0 +1,20 @@
+<p>listing category</p>
+<table>
+  <tr>
+    <td>名称</td>
+    <td>级别</td>
+    <td>父节点</td>
+    <td>介绍</td>
+  </tr>
+  <% @categories.each do |category| %>
+      <tr>
+      <td><%= category.name %></td>
+      <td><%= category.level %></td>
+	    <td><%= @categories.find_by(id: category.parent_id).name if category.parent_id != 0%></td>
+      <td><%= category.introduction %></td>
+      <td><%= link_to :edit, edit_category_path(category.id) %></td>
+      <td><%= link_to :items, category_items_path(category.id) %></td>
+    </tr>
+  <% end %>
+</table>
+<p><%= link_to 'New Category', new_category_path %></p>

@@ -1,9 +1,11 @@
-<p>new category</p>
-<%= form_for @category do |f| %>
+<p>edit category</p>
+<%= form_for @category, url: category_path(@category), method: :patch do |f| %>
     <%= f.label :名称 %>
     <%= f.text_field :name %> <br>
     <%= f.label :父类别 %>
-    <%= f.text_field :parent_name %> <br>
+    <%= f.text_field :parent_id %> <br>
+    <%= f.label :级别 %>
+    <%= f.text_field :level %> <br>
     <%= f.label :图片路径 %>
     <%= f.text_field :picture_addr %> <br>
     <%= f.label :introduction %>

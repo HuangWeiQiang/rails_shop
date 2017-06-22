@@ -1,0 +1,8 @@
+<p>类别信息</p>
+名称： <%= @category.name %> <br>
+id： <%= @category.id %> <br>
+级别： <%= @category.level %> <br>
+父节点名称： <%= @parent_category.name %> <br>
+父节点id： <%= @category.parent_id %> <br>
+介绍： <%= @category.introduction %> <br>
+<%= link_to :back, categories_path %>

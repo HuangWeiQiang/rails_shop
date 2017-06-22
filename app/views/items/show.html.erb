@@ -1,0 +1,6 @@
+<p>show item</p>
+名称： <%= @item.name %> <br>
+类别： <%= @category.name %> <br>
+价格： <%= @item.price %> <br>
+介绍： <%= @item.introduction %> <br>
+<%= link_to :back, category_items_path(@item.category_id) %>
