@@ -1,11 +1,10 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: []
   def new
     @category = Category.new
   end
 
   def create
-    @submit_data = Hash.new
-    @submit_data = {name:nil, parent_name:nil, introduction:nil, picture_addr:nil}
     @category = Category.new
     submit_data = new_category_param
     parent_category = Category.find_by(name: submit_data[:parent_name])
@@ -15,7 +14,7 @@ class CategoriesController < ApplicationController
       @category.parent_id = parent_category.id
       @category.level = parent_category.level + 1
       @category.introduction = submit_data[:introduction]
-      @category.save
+      @category.save!
     else
 
     end
@@ -39,6 +38,12 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.update(update_category_param)
     redirect_to @category
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to categories_path
   end
   private
   def new_category_param

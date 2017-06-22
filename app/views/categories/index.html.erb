@@ -14,6 +14,7 @@
       <td><%= category.introduction %></td>
       <td><%= link_to :edit, edit_category_path(category.id) %></td>
       <td><%= link_to :items, category_items_path(category.id) %></td>
+	    <td><%= link_to :delete, category_path(category.id),method: :delete %></td>
     </tr>
   <% end %>
 </table>
