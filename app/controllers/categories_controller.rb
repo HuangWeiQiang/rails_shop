@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: []
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
   def new
     @category = Category.new
   end
@@ -9,7 +9,6 @@ class CategoriesController < ApplicationController
     submit_data = new_category_param
     parent_category = Category.find_by(name: submit_data[:parent_name])
     if parent_category
-
       @category.name = submit_data[:name]
       @category.parent_id = parent_category.id
       @category.level = parent_category.level + 1
@@ -22,7 +21,6 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
     @parent_category = Category.find(@category.parent_id)
   end
 
@@ -31,21 +29,24 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+
   end
 
   def update
-    @category = Category.find(params[:id])
     @category.update(update_category_param)
     redirect_to @category
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
     redirect_to categories_path
   end
+
   private
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
   def new_category_param
     params.require(:category).permit(:name, :parent_name, :picture_addr, :introduction)
   end

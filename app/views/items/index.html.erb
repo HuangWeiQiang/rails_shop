@@ -4,6 +4,7 @@
 		<%= link_to :edit, edit_category_item_path(id: item.id) %>
 		<%= link_to :detail, category_item_path(id: item.id) %>
 		<%= link_to 'Destroy', category_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%= link_to 'add to cart', carts_path(id: item.id), method: :post %>
 		<br>
 <% end %>
 <%= link_to "New Item", new_category_item_path %>
