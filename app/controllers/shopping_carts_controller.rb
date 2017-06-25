@@ -29,7 +29,8 @@ class ShoppingCartsController < ApplicationController
 		@carts = session[:cart]
 	end
 
-	def account
-
+	def pre_order
+		session[:cart] ||= {}
+		@carts = session[:cart]
 	end
 end

@@ -1,0 +1,7 @@
+<p>recent order</p>
+<% @order_forms.each do |order_form| %>
+		订单编号：<%= order_form.id %>
+		订单明细：<%= order_form.order_items %>
+		订单总价：<%= order_form.total %>
+		订单状态：<%= order_form.state %> <br>
+<% end %>

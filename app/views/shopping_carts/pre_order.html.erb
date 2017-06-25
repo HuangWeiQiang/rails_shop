@@ -1,0 +1,19 @@
+<p>show</p>
+<table>
+	<tr>
+		<td>商品名称</td>
+		<td>商品单价</td>
+		<td>数量</td>
+	</tr>
+
+	<% @carts.each do |item_index, info| %>
+			<tr>
+				<td><%= info['item']['name'] %></td>
+				<td><%= info['item']['price'] %></td>
+				<td><%= info['count'] %></td>
+				<td><%= link_to :移除, cart_delete_path(item_index), method: :delete %><br></td>
+			</tr>
+	<% end %>
+</table>
+<%= link_to :提交, order_forms_path, method: :post %>
+<%= link_to :返回购物车修改, carts_path %>
