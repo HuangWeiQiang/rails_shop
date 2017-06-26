@@ -1,10 +1,14 @@
-<p>listing category</p>
-<table>
+<h1>listing category</h1>
+
+<table class = "table table-striped">
   <tr>
-    <td>名称</td>
-    <td>级别</td>
-    <td>父节点</td>
-    <td>介绍</td>
+    <th>名称</th>
+    <th>级别</th>
+    <th>父节点</th>
+    <th>介绍</th>
+	  <th></th>
+	  <th></th>
+	  <th></th>
   </tr>
   <% @categories.each do |category| %>
       <tr>
@@ -12,10 +16,14 @@
       <td><%= category.level %></td>
 	    <td><%= @categories.find_by(id: category.parent_id).name if category.parent_id != 0%></td>
       <td><%= category.introduction %></td>
-      <td><%= link_to :edit, edit_category_path(category.id) %></td>
-      <td><%= link_to :items, category_items_path(category.id) %></td>
-	    <td><%= link_to :delete, category_path(category.id),method: :delete %></td>
+      <td><%= link_to :edit, edit_category_path(category.id),
+                      class: 'btn btn-info' %></td>
+      <td><%= link_to :items, category_items_path(category.id),
+                      class: 'btn btn-info' %></td>
+	    <td><%= link_to :delete, category_path(category.id),method: :delete,
+	                    class: 'btn btn-danger' %></td>
     </tr>
   <% end %>
 </table>
-<p><%= link_to 'New Category', new_category_path %></p>
+<p><%= link_to 'New Category', new_category_path,
+							 class: 'btn btn-info' %></p>
